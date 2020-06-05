@@ -2,13 +2,12 @@ body {
     background-color: rgb(226, 224, 224);
 }
 
-.name{
+.name {
     color: rgb(56, 46, 150);
 }
 
-.information{
+.information {
     padding: 20px;
-  
 }
 
 #login {
@@ -16,10 +15,10 @@ body {
     height: 40%;
     margin: 10px auto;
     min-height: 400px;
-    background-color:  rgb(56, 46, 150);
+    background-color: rgb(56, 46, 150);
     padding: 10px;
     color: rgb(226, 224, 224);
-    float:center;
+    float: center;
 }
 
 input {
@@ -40,14 +39,14 @@ button {
     box-sizing: border-box;
 }
 
-#login-button{
+#login-button {
     width: 40%;
     height: 100%;
-    margin:2px 0;
+    margin: 2px 0;
     cursor: pointer;
     color: rgb(226, 224, 224);
     background-color: rgb(56, 46, 150);
-    border:3px solid rgb(226, 224, 224) ;
+    border: 3px solid rgb(226, 224, 224);
 }
 
 #login-button:hover {
@@ -59,7 +58,7 @@ button {
     font-size: 20px;
     color: rgb(226, 224, 224);
     display: block;
-    float:right;
+    float: right;
     clear: both;
 }
 
@@ -68,12 +67,12 @@ label {
     cursor: pointer;
 }
 
-input[type="checkbox"] { 
-    visibility: hidden; 
+input[type="checkbox"] {
+    visibility: hidden;
     margin: unset;
 }
 
-input[type="checkbox"] + label:before {
+input[type="checkbox"]+label:before {
     border: 2px solid rgb(226, 224, 224);
     content: "\00a0";
     display: inline-flex;
@@ -82,22 +81,19 @@ input[type="checkbox"] + label:before {
     width: 15px;
     padding: 0;
     vertical-align: top;
-    
-  }
-  input[type="checkbox"]:checked + label:before {
-    background:rgb(56, 46, 150);
+}
+
+input[type="checkbox"]:checked+label:before {
+    background: rgb(56, 46, 150);
     color: rgb(226, 224, 224);
     content: "\2713";
     text-align: center;
-  }
-  input[type="checkbox"]:checked + label:after {
+}
+
+input[type="checkbox"]:checked+label:after {
     font-weight: bold;
-  }
-  
-  input[type="checkbox"]:focus + label::before {
-      outline: rgb(56, 46, 150) auto 8px;
-  }
+}
 
-  
-
-
+input[type="checkbox"]:focus+label::before {
+    outline: rgb(56, 46, 150) auto 8px;
+}
