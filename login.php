@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 include 'includes/header.php';
 
 if (isset($_POST['login'])) {
@@ -34,16 +33,4 @@ if (isset($_POST['login'])) {
 
 <?php
 include 'includes/footer.php';
-=======
-$name = htmlspecialchars($_POST["name"]);
-$pass = htmlspecialchars($_POST["password"]);
-
-
-$conn = new PDO('mysql:host=localhost;dbname=alumni_club;charset=utf8', 'root', '');
-
-$stmt = $conn->prepare("SELECT `username`, `password` FROM `users` where (username = :name AND password = :password");
-$stmt->execute(['name' => $name, 'pass' => $pass]);
-
-var_dump($stmt);
-
->>>>>>> 1da1810f5d99f4f2b461b31c73db769b63b33e55
+?>
