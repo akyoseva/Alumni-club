@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 11 юни 2020 в 15:52
+-- Generation Time: 11 юни 2020 в 21:24
 -- Версия на сървъра: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `alumni_club`
 --
-CREATE DATABASE IF NOT EXISTS `alumni_club` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `alumni_club`;
 
 -- --------------------------------------------------------
 
@@ -48,7 +46,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `first_name`, `last_name`, `type`, `speciality`, `uni_group`, `email`, `graduation`, `password`, `location`) VALUES
-(1, 'mitakashi', 'dimitar', 'naydnev', 'student', 'software engineering', 4, 'mitko123123@gmail.com', NULL, 'parola', 0x000000000101000000e63bf889035245409a982ec4ea573740);
+(1, 'mitakashi', 'dimitar', 'naydnev', 'student', 'software engineering', 4, 'mitko123123@gmail.com', NULL, 'parola', 0x000000000101000000e63bf889035245409a982ec4ea573740),
+(2, 'akyoseva', 'Antonina', 'Kyoseva', 'student', 'Software engeneering', 4, 'akyoseva@abv.bg', 2021, 'ani1234', NULL),
+(3, 'kasenova', 'Kristina ', 'Asenova', 'student', 'Software engeneering', 4, 'kasenova@abv.bg', 2021, 'krisi1234', NULL);
 
 --
 -- Indexes for dumped tables
@@ -69,7 +69,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
