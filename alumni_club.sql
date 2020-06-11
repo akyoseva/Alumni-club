@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time:  9 юни 2020 в 18:39
+-- Generation Time: 11 юни 2020 в 15:52
 -- Версия на сървъра: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -37,17 +37,18 @@ CREATE TABLE `users` (
   `type` varchar(20) NOT NULL,
   `speciality` varchar(50) NOT NULL,
   `uni_group` int(11) NOT NULL,
-  `mail` varchar(30) NOT NULL,
+  `email` varchar(30) NOT NULL,
   `graduation` year(4) DEFAULT NULL,
-  `password` varchar(25) NOT NULL
+  `password` varchar(25) NOT NULL,
+  `location` point DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Схема на данните от таблица `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `first_name`, `last_name`, `type`, `speciality`, `uni_group`, `mail`, `graduation`, `password`) VALUES
-(1, 'mitakashi', 'dimitar', 'naydnev', 'student', 'software engineering', 4, 'mitko123123@gmail.com', NULL, 'dasdasd');
+INSERT INTO `users` (`id`, `username`, `first_name`, `last_name`, `type`, `speciality`, `uni_group`, `email`, `graduation`, `password`, `location`) VALUES
+(1, 'mitakashi', 'dimitar', 'naydnev', 'student', 'software engineering', 4, 'mitko123123@gmail.com', NULL, 'parola', 0x000000000101000000e63bf889035245409a982ec4ea573740);
 
 --
 -- Indexes for dumped tables
