@@ -9,7 +9,7 @@ $user = $stmt->fetch();
 $coordinates = unpack('x/x/x/x/corder/Ltype/dlat/dlon', $user['location']);
 
 if (isset($_POST['save'])) {
-  $username = htmlspecialchars($_POST['username']);
+  $username = htmlspecialchars($_SESSION['username']);
   $email = htmlspecialchars($_POST['email']);
   $password = htmlspecialchars($_POST['password']);
   $first_name = htmlspecialchars($_POST['first_name']);
@@ -20,9 +20,17 @@ if (isset($_POST['save'])) {
   $group = htmlspecialchars($_POST['group']);
   $graduation = htmlspecialchars($_POST['graduation']);
 
-  $stmt = $pdo->prepare('UPDATE users
-                        SET(email = :email, last_name =:last_name, first_name = :first_name, uni_group = :group, password = :password, graduation = :graduation, speciality= :speciality, location= Point(:location))
-                        WHERE username = :username ');
+  $stmt = $pdo->prepare("UPDATE users
+                        SET email = :email,
+                          last_name =:last_name,
+                          first_name = :first_name,
+                          uni_group = :group,
+                          password = :password,
+                          graduation = :graduation,
+                          speciality= :speciality
+                          -- location= Point(:location)
+                          
+                        WHERE username = :username ");
   $stmt->execute([
     'username' => $username,
     'email' => $email,
@@ -31,18 +39,15 @@ if (isset($_POST['save'])) {
     'last_name' => $last_name,
     'graduation' => $graduation,
     'group' => $group,
-    'speciality' => $username,
-    'location' => $location
+    'speciality' => $speciality,
+    // 'location' => $location
   ]);
-  var_dump($stmt->errorInfo());
+  // var_dump($stmt->errorInfo());die();
+  header("location:profile.php");
 }
 ?>
 
 <form method="POST">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input name="username" value="<?php echo $user['username']; ?>" type="text" class="form-control" id="username">
-  </div>
   <div class="form-group">
     <label for="email">Email address</label>
     <input name="email" value="<?php echo $user['email']; ?>" type="email" class="form-control" id="email">
