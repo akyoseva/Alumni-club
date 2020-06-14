@@ -19,6 +19,9 @@ if (isset($_POST['save'])) {
   $speciality = htmlspecialchars($_POST['speciality']);
   $group = htmlspecialchars($_POST['group']);
   $graduation = htmlspecialchars($_POST['graduation']);
+  $visibility = htmlspecialchars($_POST['visibility']);
+
+  var_dump(htmlspecialchars($_POST['visibility']));
 
   $stmt = $pdo->prepare("UPDATE users
                         SET email = :email,
@@ -27,7 +30,8 @@ if (isset($_POST['save'])) {
                           uni_group = :group,
                           password = :password,
                           graduation = :graduation,
-                          speciality= :speciality
+                          speciality= :speciality,
+                          visibility= :visibility
                           -- location= Point(:location)
                           
                         WHERE username = :username ");
@@ -40,9 +44,10 @@ if (isset($_POST['save'])) {
     'graduation' => $graduation,
     'group' => $group,
     'speciality' => $speciality,
+    'visibility' => $visibility,
     // 'location' => $location
   ]);
-  // var_dump($stmt->errorInfo());die();
+
   header("location:profile.php");
 }
 ?>
@@ -80,9 +85,17 @@ if (isset($_POST['save'])) {
   <div class="form-group">
     <label for="graduation">Graduation</label>
     <input name="graduation" type="year" value="<?php echo $user['graduation']; ?>" class="form-control" id="graduation">
+  </div>  
+  <div class="form-group">
+    <label for="visibility">visibility</label>
+    <select name="visibility" class="form-control my-0 py-1 amber-border">
+      <option <?php if( $user['visibility'] == 0) echo 'selected'; ?> value="0">Public for everyone</option>
+      <option <?php if( $user['visibility'] == 1) echo 'selected'; ?> value="1">Public for student of my speciality</option>
+      <option <?php if( $user['visibility'] == 2) echo 'selected'; ?> value="2">Public for student of my group</option>
+      <option <?php if( $user['visibility'] == 3) echo 'selected'; ?> value="3">Private</option>
+    </select>
   </div>
-
   <button type="submit" name="save" class="btn btn-primary">Submit</button>
 
 
-</form>
+  </form>
