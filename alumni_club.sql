@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 11 юни 2020 в 21:24
+-- Generation Time: 15 юни 2020 в 13:14
 -- Версия на сървъра: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -36,19 +36,21 @@ CREATE TABLE `users` (
   `speciality` varchar(50) NOT NULL,
   `uni_group` int(11) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `graduation` year(4) DEFAULT NULL,
+  `graduation` year(4) DEFAULT 1970,
   `password` varchar(25) NOT NULL,
-  `location` point DEFAULT NULL
+  `location` point DEFAULT NULL,
+  `visibility` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Схема на данните от таблица `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `first_name`, `last_name`, `type`, `speciality`, `uni_group`, `email`, `graduation`, `password`, `location`) VALUES
-(1, 'mitakashi', 'dimitar', 'naydnev', 'student', 'software engineering', 4, 'mitko123123@gmail.com', NULL, 'parola', 0x000000000101000000e63bf889035245409a982ec4ea573740),
-(2, 'akyoseva', 'Antonina', 'Kyoseva', 'student', 'Software engeneering', 4, 'akyoseva@abv.bg', 2021, 'ani1234', NULL),
-(3, 'kasenova', 'Kristina ', 'Asenova', 'student', 'Software engeneering', 4, 'kasenova@abv.bg', 2021, 'krisi1234', NULL);
+INSERT INTO `users` (`id`, `username`, `first_name`, `last_name`, `type`, `speciality`, `uni_group`, `email`, `graduation`, `password`, `location`, `visibility`) VALUES
+(1, 'mitakashi', 'Dimita', 'Naydenov', 'student', 'Software Engineering', 4, 'mitko123123@gmail.com', 2020, '', 0x000000000101000000e63bf889035245409a982ec4ea573740, 3),
+(2, 'akyoseva', 'Antonina', 'Kyoseva', 'student', 'Software Engineering', 4, 'akyoseva@abv.bg', 2021, 'ani1234', NULL, 2),
+(3, 'kasenova', 'Kristina ', 'Asenova', 'student', 'Software Engineering', 4, 'kasenova@abv.bg', 2021, 'krisi1234', NULL, 1),
+(7, 'adasd', 'някой ', 'непознат', 'не се знае', 'нещо си ', 123, '', 1970, '123', NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -69,7 +71,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
