@@ -1,14 +1,11 @@
 <?php
 include 'includes/header.php';
-?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <title>Recent posts</title>
-  <link href="css/blog-home.css" rel="stylesheet">
-</head>
+$stmt = $pdo->prepare('SELECT * FROM messages ORDER BY created DESC  ');
+$posts = $stmt->fetch();
+
+
+?>
 
 <div class="row">
     <div class="col-12">
