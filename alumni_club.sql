@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15 юни 2020 в 13:14
+-- Generation Time:  6 юли 2020 в 18:31
 -- Версия на сървъра: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `alumni_club`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура на таблица `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `created` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -57,6 +70,12 @@ INSERT INTO `users` (`id`, `username`, `first_name`, `last_name`, `type`, `speci
 --
 
 --
+-- Indexes for table `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -66,6 +85,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
