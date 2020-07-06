@@ -13,7 +13,7 @@ include 'includes/header.php';
         <div class="col-md-8">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="text-center">Recent posts</h1>
+                    <h1 class="text-center"></h1>
                     <div>
                         <div class="card mb-4">
                             <div class="card-body">
