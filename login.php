@@ -22,6 +22,7 @@ if (isset($_POST['login'])) {
     } 
 }
 ?>
+
 <div id="login">
     <h2>Вход</h2>
     <form method="POST">
