@@ -15,15 +15,26 @@ include 'includes/db.php';
 </head>
 
 <body>
-  <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.php">Alumni</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.php">Alumni Club</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+
+        
+        <?php if (isset($_SESSION["username"])) { ?>
+            <li class="nav-item">
+              <a class="nav-link" href="profile.php">Profile</a>
+            </li>
+
+          <?php } ?>
+
+          <li class="nav-item">
+            <a class="nav-link" href="users.php">Users</a>
+          </li>
 
           <?php if (!isset($_SESSION["username"])) { ?>
 
@@ -31,26 +42,16 @@ include 'includes/db.php';
               <a class="nav-link" href="login.php">Login</a>
             </li>
 
-          <?php } ?> 
+          <?php } ?>
+
           <?php if (isset($_SESSION["username"])) { ?>
             <li class="nav-item">
-              <a class="nav-link" href="profile.php">Profile</a>
+              <a class="nav-link" href="logout.php">Logout</a>
             </li>
 
-          <?php } ?> 
-          <?php if (isset($_SESSION["username"])) { ?>
-            <li class="nav-item">
-              <a class="nav-link" href="logout.php">Изход</a>
-            </li>
-
-          <?php } ?> 
-
-          <li class="nav-item">
-            <a class="nav-link" href="users.php">Users</a>
-          </li>
+          <?php } ?>
 
         </ul>
-
-      </div>
     </nav>
-    <?php
+</body>
+<?php
