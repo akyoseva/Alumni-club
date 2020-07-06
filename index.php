@@ -3,13 +3,6 @@ include 'includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Recent posts</title>
-    <link href="css/blog-home.css" rel="stylesheet">
-</head>
-
 <body>
 <!-- Page Content -->
 <div class="container">

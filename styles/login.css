@@ -1,0 +1,29 @@
+body {
+  background-image: url('../images/mk1.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.card-body {
+  width: 550px;
+  height: 470px;
+  padding-top: 3%;
+  background-color: #dfa3a3;
+  border-radius: 20px;
+  /*box-shadow: 1px 10px 29px 5px #f44f4f;*/
+  box-shadow: 0px 4px 34px 10px #f44f4f;
+  color: black;
+  text-align: center;
+  margin-left: 25%;
+}
+
+.col-md-12 {
+  text-align:center;
+}
+
+.bt {
+  color:black; 
+  background-color: #ad2e2e;
+  height:38px;
+  width:450px;
+}
