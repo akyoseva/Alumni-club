@@ -10,7 +10,6 @@ $counter = 0;
 
 $stmt2 = $pdo->query('SELECT count(id) as count FROM users');
 $numberUsers = $stmt2->fetchAll()[0]['count'];
-var_dump($numberUsers);
 ?>
 
 <!-- Page Content -->
@@ -34,7 +33,8 @@ var_dump($numberUsers);
                         <div class="card-body">
                             <h2 class="card-title"><?php echo $post['title'] ?></h2>
                             <p class="card-text"><?php echo $post['message']  ?></p>
-                            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                            <a href="#" class="btn btn-primary">Read comments &rarr;</a>
+                            <a href="#" class="btn btn-primary">Create comments &rarr;</a>
                         </div>
                         <div class="card-footer text-muted">
                             Posted on <?php echo $post['created'] ?> by <?php echo $post['username']  ?>

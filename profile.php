@@ -106,3 +106,5 @@ if (isset($_POST['save'])) {
     </div>
   </div>
 </div>
+<?php
+include 'includes/footer.php';

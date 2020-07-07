@@ -15,43 +15,49 @@ include 'includes/db.php';
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.php">Alumni Club</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.php">Alumni Club</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
 
-        
         <?php if (isset($_SESSION["username"])) { ?>
-            <li class="nav-item">
-              <a class="nav-link" href="profile.php">Profile</a>
-            </li>
-
-          <?php } ?>
-
           <li class="nav-item">
-            <a class="nav-link" href="users.php">Users</a>
+            <a class="nav-link" href="create_post.php">Create post</a>
           </li>
 
-          <?php if (!isset($_SESSION["username"])) { ?>
+        <?php } ?>
 
-            <li class="nav-item">
-              <a class="nav-link" href="login.php">Login</a>
-            </li>
+        <?php if (isset($_SESSION["username"])) { ?>
+          <li class="nav-item">
+            <a class="nav-link" href="profile.php">Profile</a>
+          </li>
 
-          <?php } ?>
+        <?php } ?>
 
-          <?php if (isset($_SESSION["username"])) { ?>
-            <li class="nav-item">
-              <a class="nav-link" href="logout.php">Logout</a>
-            </li>
+        <li class="nav-item">
+          <a class="nav-link" href="users.php">Users</a>
+        </li>
 
-          <?php } ?>
+        <?php if (!isset($_SESSION["username"])) { ?>
 
-        </ul>
-    </nav>
+          <li class="nav-item">
+            <a class="nav-link" href="login.php">Login</a>
+          </li>
+
+        <?php } ?>
+
+        <?php if (isset($_SESSION["username"])) { ?>
+          <li class="nav-item">
+            <a class="nav-link" href="logout.php">Logout</a>
+          </li>
+
+        <?php } ?>
+
+      </ul>
+  </nav>
 </body>
 <?php

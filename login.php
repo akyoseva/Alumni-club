@@ -13,10 +13,11 @@ if (isset($_POST['login'])) {
         'username' => $username,
         'password' => $password
     ));
-
+    $user = $stmt->fetchALl();
     $count = $stmt->rowCount();
     if ($count > 0) {
         $_SESSION["username"] = $username;
+        $_SESSION["id"] = $user[0]['id'];
         header("location:index.php");
     } else {
         $message = '<h3>Wrong Data</h3>';
@@ -65,4 +66,3 @@ if (isset($_POST['login'])) {
 
 <?php
 include 'includes/footer.php';
-?>
