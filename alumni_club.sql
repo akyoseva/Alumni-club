@@ -34,6 +34,7 @@ CREATE TABLE `messages` (
   `created` datetime NOT NULL,
   `visibility` tinyint(4) NOT NULL,
   `title` varchar(40) NOT NULL
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
