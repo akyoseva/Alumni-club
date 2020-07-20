@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20 юли 2020 в 16:58
+-- Generation Time: 20 юли 2020 в 20:35
 -- Версия на сървъра: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -35,6 +35,15 @@ CREATE TABLE `comments` (
   `creation_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Схема на данните от таблица `comments`
+--
+
+INSERT INTO `comments` (`id`, `text`, `user_id`, `post_id`, `creation_time`) VALUES
+(1, '21.10.2020', 3, 2, '20:42:26'),
+(2, '09.10.2020', 1, 2, '20:48:26'),
+(3, 'Okey.', 8, 3, '21:33:13');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +58,16 @@ CREATE TABLE `posts` (
   `visibility` int(11) NOT NULL,
   `creation_time` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Схема на данните от таблица `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `title`, `description`, `visibility`, `creation_time`) VALUES
+(1, 1, 'How to use Alumni-club', '5 easy steps..', 0, '18:12:45'),
+(2, 2, 'Alumni meeting', 'When to hold the meeting?', 0, '18:16:15'),
+(3, 3, 'Some post..', 'Some text..', 1, '18:19:51'),
+(4, 12, 'Wellcome to Alumni club', '..', 0, '20:41:30');
 
 -- --------------------------------------------------------
 
@@ -128,13 +147,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
