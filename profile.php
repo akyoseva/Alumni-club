@@ -3,10 +3,11 @@ include 'includes/header.php';
 if (!$_SESSION['username']) {
   header("location:login.php");
 }
+
 $stmt = $pdo->prepare('SELECT * FROM users WHERE username = :username ');
 $stmt->execute(['username' => $_SESSION['username']]);
 $user = $stmt->fetch();
-$coordinates = unpack('x/x/x/x/corder/Ltype/dlat/dlon', $user['location']);
+//$coordinates = unpack('x/x/x/x/corder/Ltype/dlat/dlon', $user['location']);
 
 if (isset($_POST['save'])) {
   $username = htmlspecialchars($_SESSION['username']);
@@ -15,7 +16,7 @@ if (isset($_POST['save'])) {
   $first_name = htmlspecialchars($_POST['first_name']);
   $last_name = htmlspecialchars($_POST['last_name']);
   //Point(10.2045 34.2379)
-  $location = htmlspecialchars($_POST['location']);
+  //$location = htmlspecialchars($_POST['location']);
   $speciality = htmlspecialchars($_POST['speciality']);
   $group = htmlspecialchars($_POST['group']);
   $graduation = htmlspecialchars($_POST['graduation']);
@@ -75,10 +76,10 @@ if (isset($_POST['save'])) {
             <input name="last_name" value="<?php echo $user['last_name']; ?>" type="text" class="form-control" id="last_name">
           </div>
           <!-- TODO location -->
-          <div class="form-group">
-            <label for="location">Location</label>
+         <!-- <div class="form-group"> -->
+            <!-- <label for="location">Location</label>
             <input name="location" value="<?php echo $coordinates['lat'] . ', ' . $coordinates['lon']; ?>" type="text" class="form-control" id="location">
-          </div>
+          </div> -->
           <div class="form-group">
             <label for="speciality">Speciality</label>
             <input name="speciality" type="text" value="<?php echo $user['speciality']; ?>" class="form-control" id="speciality">
