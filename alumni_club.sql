@@ -114,6 +114,17 @@ INSERT INTO `users` (`id`, `username`, `first_name`, `last_name`, `specialty`, `
 (19, 'ahadzhieva', 'Alya', 'Hadzhieva', 'Mathematics', 2020, 'Alya12345$', '0', 'alya@abv.bg', 8),
 (20, 'ydimitrov', 'Yana', 'Dimitrova', 'Informatics', 2023, 'Yana12345$', '0', 'yana@abv.bg', 1);
 
+
+CREATE TABLE `visibility` (
+  `user_id` int(11) NOT NULL,
+  `username` int(11) NOT NULL,
+  `first_name` int(11) NOT NULL,
+  `last_name` int(11) NOT NULL,
+  `specialty` int(11) NOT NULL,
+  `graduation` int(11) NOT NULL,
+  `email` int(11) DEFAULT NULL,
+  `uni_group` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 --
 -- Indexes for dumped tables
 --
@@ -179,16 +190,6 @@ ALTER TABLE `posts`
   ADD CONSTRAINT `posts_fk_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
-CREATE TABLE `visibility` (
-  `user_id` int(11) NOT NULL,
-  `username` int(11) NOT NULL,
-  `first_name` int(11) NOT NULL,
-  `last_name` int(11) NOT NULL,
-  `specialty` int(11) NOT NULL,
-  `graduation` int(11) NOT NULL,
-  `email` int(11) DEFAULT NULL,
-  `uni_group` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE `visibility`
   ADD PRIMARY KEY (`user_id`);
