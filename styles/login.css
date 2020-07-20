@@ -1,29 +1,60 @@
-body {
-  background-image: url('../images/mk1.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+body{
+  overflow: hidden;
 }
 
-.card-body {
-  width: 550px;
-  height: 470px;
-  padding-top: 3%;
-  background-color: #dfa3a3;
-  border-radius: 20px;
-  /*box-shadow: 1px 10px 29px 5px #f44f4f;*/
-  box-shadow: 0px 4px 34px 10px #f44f4f;
-  color: black;
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: 0.75rem;
+}
+
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('styles/images/connections_people.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-heading {
+  font-weight: 300;
   text-align: center;
-  margin-left: 25%;
 }
 
-.col-md-12 {
-  text-align:center;
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
 }
 
-.bt {
-  color:black; 
-  background-color: #ad2e2e;
-  height:38px;
-  width:450px;
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
 }
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: #495057;
+  cursor: text;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+
