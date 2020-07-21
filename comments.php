@@ -17,7 +17,7 @@ $counter = 1;
     <?php
         if (isset($_SESSION["username"])) {
             $stmt = $pdo->prepare('SELECT * FROM comments WHERE post_id = :id ');
-            $stmt->execute(['id' => $_GET['id']]);
+            $stmt->execute(['post_id' => $_GET['id']]);
             $data = $stmt->fetch();
     foreach ($data as $row) {
         ?>
