@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 20 юли 2020 в 20:35
+-- Generation Time: 21 юли 2020 в 15:04
 -- Версия на сървъра: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -67,7 +67,8 @@ INSERT INTO `posts` (`id`, `user_id`, `title`, `description`, `visibility`, `cre
 (1, 1, 'How to use Alumni-club', '5 easy steps..', 0, '18:12:45'),
 (2, 2, 'Alumni meeting', 'When to hold the meeting?', 0, '18:16:15'),
 (3, 3, 'Some post..', 'Some text..', 1, '18:19:51'),
-(4, 12, 'Wellcome to Alumni club', '..', 0, '20:41:30');
+(4, 12, 'Wellcome to Alumni club', '..', 0, '20:41:30'),
+(6, 1, 'How to create post in the Alumni-club?', 'Some description..', 0, '12:59:07');
 
 -- --------------------------------------------------------
 
@@ -114,6 +115,11 @@ INSERT INTO `users` (`id`, `username`, `first_name`, `last_name`, `specialty`, `
 (19, 'ahadzhieva', 'Alya', 'Hadzhieva', 'Mathematics', 2020, 'Alya12345$', '0', 'alya@abv.bg', 8),
 (20, 'ydimitrov', 'Yana', 'Dimitrova', 'Informatics', 2023, 'Yana12345$', '0', 'yana@abv.bg', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Структура на таблица `visibility`
+--
 
 CREATE TABLE `visibility` (
   `user_id` int(11) NOT NULL,
@@ -125,6 +131,33 @@ CREATE TABLE `visibility` (
   `email` int(11) DEFAULT NULL,
   `uni_group` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Схема на данните от таблица `visibility`
+--
+
+INSERT INTO `visibility` (`user_id`, `username`, `first_name`, `last_name`, `specialty`, `graduation`, `email`, `uni_group`) VALUES
+(1, 0, 1, 1, 2, 0, 1, 1),
+(2, 0, 0, 0, 0, 0, 0, 0),
+(3, 0, 0, 0, 0, 0, 0, 0),
+(4, 0, 0, 0, 0, 0, 0, 0),
+(5, 0, 0, 0, 0, 0, 0, 0),
+(6, 0, 0, 0, 0, 0, 0, 0),
+(7, 0, 0, 0, 0, 0, 0, 0),
+(8, 0, 0, 0, 0, 0, 0, 0),
+(9, 0, 0, 0, 0, 0, 0, 0),
+(10, 0, 0, 0, 0, 0, 0, 0),
+(11, 0, 0, 0, 0, 0, 0, 0),
+(12, 0, 0, 0, 0, 0, 0, 0),
+(13, 0, 0, 0, 0, 0, 0, 0),
+(14, 0, 0, 0, 0, 0, 0, 0),
+(15, 0, 0, 0, 0, 0, 0, 0),
+(16, 0, 0, 0, 0, 0, 0, 0),
+(17, 0, 0, 0, 0, 0, 0, 0),
+(18, 0, 0, 0, 0, 0, 0, 0),
+(19, 0, 0, 0, 0, 0, 0, 0),
+(20, 0, 0, 0, 0, 0, 0, 0);
+
 --
 -- Indexes for dumped tables
 --
@@ -151,6 +184,13 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `visibility`
+--
+ALTER TABLE `visibility`
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `visibility_fk_users_idx` (`user_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -164,7 +204,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -188,15 +228,10 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_fk_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-COMMIT;
 
-
-ALTER TABLE `visibility`
-  ADD PRIMARY KEY (`user_id`);
-
-ALTER TABLE `visibility`
-  ADD KEY `visibility_fk_users_idx` (`user_id`);
-
+--
+-- Ограничения за таблица `visibility`
+--
 ALTER TABLE `visibility`
   ADD CONSTRAINT `visibility_fk_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
