@@ -1,58 +1,80 @@
 <?php
 include 'includes/header.php';
 
-$counter = 1;
+
+$stmt = $pdo->query('SELECT posts.* , users.username FROM posts INNER JOIN users ON users.id = posts.user_id ORDER BY posts.creation_time DESC  ');
+$posts = $stmt->fetchAll();
+$numberOfPosts = count($posts);
+$counter = 0;
+
+
+$stmt2 = $pdo->query('SELECT count(id) as count FROM users');
+$numberUsers = $stmt2->fetchAll()[0]['count'];
 ?>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Creation time</th>
-            <th scope="col">Author</th>
-        </tr>
-    </thead>
-<tbody>
-        <?php
+<!-- Page Content -->
+<div class="container">
 
-        if (isset($_SESSION["username"])) {
-            $stmt = $pdo->prepare('SELECT username, specialty, uni_group FROM users WHERE username = :username ');
-            $stmt->execute(['username' => $_SESSION['username']]);
-            $user = $stmt->fetch();
-            $user_specialty = $user["specialty"];
-            $user_uni_group = $user["uni_group"];
+    <div class="row">
 
-            // var_dump($user_uni_group);die();
+        <!-- Blog Entries Column -->
+        <div class="col-md-12">
+            <h1 class="text-center">Recent posts</h1>
+        </div>
+    </div>
+    <?php
+    foreach ($posts as $post) {
 
-            $data = $pdo->prepare("SELECT title, description, creation_time, user_id FROM posts
-                         WHERE visibility = 0 
-                         OR (visibility = 1 AND specialty = :specialty) 
-                         OR (visibility = 2 AND uni_group = :uni_group)");
-            $data->execute([
-                'specialty' => $user_specialty,
-                'uni_group' => $user_uni_group,
-            ]);
-        } else {
-            $data = $pdo->query("SELECT title, description, creation_time, user_id FROM posts WHERE visibility = 0")->fetchAll();
-        }   
-        foreach ($data as $row) {
-        ?>
-            <tr>
-                <th scope="row"><?php echo $counter++ ?></th>
-                <td><?php echo $row['title'] ?></td>
-                <td><?php echo $row['description'] ?></td>
-                <td><?php echo $row['creation_time'] ?></td>
-                <td><?php echo $row['user_id'] ?></td>
-            </tr>
-        <?php
-        }
-
-        ?>
-    </tbody>
-</table>
-
+    ?>
+        <div class="row">
+            <div class="col-8">
+                <div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h2 class="card-title"><?php echo $post['title'] ?></h2>
+                            <p class="card-text"><?php echo $post['description']  ?></p>
+                            <a href="#" class="btn btn-primary">Read comments &rarr;</a>
+                            <a href="create_comment.php?id="$post_id class="btn btn-primary" link="<?php echo $post['id'] ?>">Create comment &rarr;</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on <?php echo $post['creation_time'] ?> by <?php echo $post['username']  ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+            if ($counter == 0) {
+            ?>
+                <div class="col-md-4">
+                    <!-- Statistics -->
+                    <div class="card my-4">
+                        <h5 class="card-header">Statistics</h5>
+                        <div class="card-body">
+                            <div>
+                                There are <?php echo $numberUsers ?> members in the group
+                            </div>
+                            <div>
+                                There are <?php echo $numberOfPosts ?> posts in the group
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            }
+            $counter++;
+            ?>
+        </div>
+    <?php } ?>
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center mb-4">
+        <li class="page-item">
+            <a class="page-link" href="#">&larr; Older</a>
+        </li>
+        <li class="page-item disabled">
+            <a class="page-link" href="#">Newer &rarr;</a>
+        </li>
+    </ul>
 </div>
+
 <?php
 include 'includes/footer.php';
