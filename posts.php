@@ -8,18 +8,17 @@ $counter = 1;
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Username</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Specialty</th>
-            <th scope="col">Group</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Creation time</th>
+            <th scope="col">Author</th>
         </tr>
     </thead>
-    <tbody>
+<tbody>
         <?php
 
         if (isset($_SESSION["username"])) {
-            $stmt = $pdo->prepare('SELECT * FROM users WHERE username = :username ');
+            $stmt = $pdo->prepare('SELECT username, specialty, uni_group FROM users WHERE username = :username ');
             $stmt->execute(['username' => $_SESSION['username']]);
             $user = $stmt->fetch();
             $user_specialty = $user["specialty"];
@@ -27,7 +26,7 @@ $counter = 1;
 
             // var_dump($user_uni_group);die();
 
-            $data = $pdo->prepare("SELECT username, first_name, last_name, uni_group, specialty FROM users
+            $data = $pdo->prepare("SELECT title, description, creation_time, user_id FROM posts
                          WHERE visibility = 0 
                          OR (visibility = 1 AND specialty = :specialty) 
                          OR (visibility = 2 AND uni_group = :uni_group)");
@@ -36,17 +35,16 @@ $counter = 1;
                 'uni_group' => $user_uni_group,
             ]);
         } else {
-            $data = $pdo->query("SELECT username, first_name, last_name, uni_group, specialty FROM users WHERE visibility = 0")->fetchAll();
+            $data = $pdo->query("SELECT title, description, creation_time, user_id FROM posts WHERE visibility = 0")->fetchAll();
         }   
         foreach ($data as $row) {
         ?>
             <tr>
                 <th scope="row"><?php echo $counter++ ?></th>
-                <td><?php echo $row['username'] ?></td>
-                <td><?php echo $row['first_name'] ?></td>
-                <td><?php echo $row['last_name'] ?></td>
-                <td><?php echo $row['specialty'] ?></td>
-                <td><?php echo $row['uni_group'] ?></td>
+                <td><?php echo $row['title'] ?></td>
+                <td><?php echo $row['description'] ?></td>
+                <td><?php echo $row['creation_time'] ?></td>
+                <td><?php echo $row['user_id'] ?></td>
             </tr>
         <?php
         }

@@ -42,6 +42,10 @@ include 'includes/db.php';
           <a class="nav-link" href="users.php">Users</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="posts.php">Posts</a>
+        </li>
+
         <?php if (!isset($_SESSION["username"])) { ?>
 
           <li class="nav-item">

@@ -3,21 +3,21 @@ include 'includes/header.php';
 
 
 if (isset($_POST['save'])) {
-    $message = htmlspecialchars($_POST['message']);
     $title = htmlspecialchars($_POST['title']);
+    $description = htmlspecialchars($_POST['description']);
     $visibility = htmlspecialchars($_POST['visibility']);
-    $created = new DateTime();
+    $creation_time = new DateTime();
 
     var_dump(htmlspecialchars($_POST['visibility']));
 
-    $stmt = $pdo->prepare("INSERT INTO messages (title, message, visibility, created, user_id)
-                        VALUES( :title, :message, :visibility, :created, :user_id) ");
+    $stmt = $pdo->prepare("INSERT INTO posts (user_id,title, description, visibility, creation_time)
+                        VALUES(:user_id, :title, :description, :visibility, :creation_time) ");
     $stmt->execute([
+        'user_id' => $_SESSION['id'],
         'title' => $title,
-        'message' => $message,
+        'description' => $description,
         'visibility' => $visibility,
-        'created' => $created->format('Y-m-d H:i:s'),
-        'user_id' => $_SESSION['id']
+        'creation_time' => $creation_time->format('Y-m-d H:i:s')
     ]);
     header("location:index.php");
 }
@@ -33,7 +33,8 @@ if (isset($_POST['save'])) {
                     <input name="title" type="text" class="form-control" id="tite">
                 </div>
                 <div class="form-group">
-                    <textarea rows="6" cols="101" name="message" id="message"></textarea>
+                    <label for="description">Description</label>
+                    <textarea rows="6" cols="97" name="description" id="description"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="visibility">Visibility</label>
