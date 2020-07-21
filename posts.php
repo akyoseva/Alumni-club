@@ -34,7 +34,7 @@ $numberUsers = $stmt2->fetchAll()[0]['count'];
                             <h2 class="card-title"><?php echo $post['title'] ?></h2>
                             <p class="card-text"><?php echo $post['description']  ?></p>
                             <a href="#" class="btn btn-primary">Read comments &rarr;</a>
-                            <a href="#" class="btn btn-primary">Create comments &rarr;</a>
+                            <a href="create_comment.php?id="$post_id class="btn btn-primary" link="<?php echo $post['id'] ?>">Create comment &rarr;</a>
                         </div>
                         <div class="card-footer text-muted">
                             Posted on <?php echo $post['creation_time'] ?> by <?php echo $post['username']  ?>
@@ -51,10 +51,10 @@ $numberUsers = $stmt2->fetchAll()[0]['count'];
                         <h5 class="card-header">Statistics</h5>
                         <div class="card-body">
                             <div>
-                                There are <?php echo $numberUsers ?> members the group
+                                There are <?php echo $numberUsers ?> members in the group
                             </div>
                             <div>
-                                There are <?php echo $numberOfPosts ?> posts the group
+                                There are <?php echo $numberOfPosts ?> posts in the group
                             </div>
                         </div>
                     </div>

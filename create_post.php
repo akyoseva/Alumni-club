@@ -7,8 +7,6 @@ if (isset($_POST['save'])) {
     $description = htmlspecialchars($_POST['description']);
     $creation_time = new DateTime();
 
-    var_dump(htmlspecialchars($_POST['visibility']));
-
     $stmt = $pdo->prepare("INSERT INTO posts (user_id,title, description, creation_time)
                         VALUES(:user_id, :title, :description, :creation_time) ");
     $stmt->execute([
