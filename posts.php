@@ -12,12 +12,10 @@ $stmt2 = $pdo->query('SELECT count(id) as count FROM users');
 $numberUsers = $stmt2->fetchAll()[0]['count'];
 ?>
 
-<!-- Page Content -->
 <div class="container">
 
     <div class="row">
 
-        <!-- Blog Entries Column -->
         <div class="col-md-12">
             <h1 class="text-center">Recent posts</h1>
         </div>
@@ -65,15 +63,6 @@ $numberUsers = $stmt2->fetchAll()[0]['count'];
             ?>
         </div>
     <?php } ?>
-    <!-- Pagination -->
-    <ul class="pagination justify-content-center mb-4">
-        <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-        </li>
-        <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-        </li>
-    </ul>
 </div>
 
 <?php
