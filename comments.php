@@ -14,29 +14,33 @@ $counter = 1;
         </tr>
     </thead>
     <tbody>
-    <?php
+        <?php
         if (isset($_SESSION["username"])) {
-            $stmt = $pdo->prepare('SELECT * FROM comments WHERE post_id = :id ');
-            $stmt->execute(['post_id' => $_GET['id']]);
-            $data = $stmt->fetch();
-    foreach ($data as $row) {
+            $stmt = $pdo->prepare('SELECT comments.*, username FROM comments JOIN users ON comments.user_id = users.id WHERE post_id = :id ');
+            $stmt->execute(['id' => $_GET['id']]);
+            $data = $stmt->fetchAll();
+           // var_dump($data);die();
+            foreach ($data as $row) {
         ?>
-    
-        <tr>
-            <th scope="row"><?php echo $counter++ ?></th>
-            <td>
-                <?php echo $row['text'] ?>
-            </td>
-            <td>
-                <?php echo $row['creation_time'] ?>
-            </td>
-        </tr>
-    <?php
+
+                <tr>
+                    <td scope="row"><?php echo $counter++ ?></td>
+                    <td>
+                        <?php echo $row['text'] ?>
+                    </td>
+                    <td>
+                        <?php echo $row['username'] ?>
+                    </td>
+                    <td>
+                        <?php echo $row['creation_time'] ?>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        <?php
         }
-    ?>
-    <?php
-        }
-    ?>
+        ?>
 
     </tbody>
 </table>
