@@ -44,7 +44,7 @@ if (isset($_POST['save'])) {
                           first_name = :first_name,
                           uni_group = :group,
                           username = :username,
-                         -- password = :password,
+                          password = :password,
                           graduation = :graduation,
                           specialty= :specialty
                           -- location= Point(:location)                
@@ -52,7 +52,7 @@ if (isset($_POST['save'])) {
   $stmt->execute([
     'id' => $user_id,
     'email' => $email,
-//    'password' => $password,
+    'password' => $password,
     'first_name' => $first_name,
     'last_name' => $last_name,
     'graduation' => $graduation,
@@ -129,7 +129,7 @@ if (isset($_POST['save'])) {
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input name="password" type="password" class="form-control" id="password">
+            <input name="password" value="<?php echo $user['password']; ?>" type="password" class="form-control" id="password">
           </div>
           <div class="form-group">
             <label for="first_name">First name</label>
