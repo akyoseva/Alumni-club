@@ -31,8 +31,8 @@ $numberUsers = $stmt2->fetchAll()[0]['count'];
                         <div class="card-body">
                             <h2 class="card-title"><?php echo $post['title'] ?></h2>
                             <p class="card-text"><?php echo $post['description']  ?></p>
-                            <a href="#" class="btn btn-primary">Read comments &rarr;</a>
-                            <a href="<?php echo sprintf('create_post.php?id=%s', $post['id']); ?>" class="btn btn-primary" link="<?php echo $post['id'] ?>">Create comment &rarr;</a>
+                            <a href="<?php echo sprintf('comments.php?id=%s', $post['id']); ?>" class="btn btn-primary" link="<?php echo $post['id'] ?>">Read comments &rarr;</a>
+                            <a href="<?php echo sprintf('create_comment.php?id=%s', $post['id']); ?>" class="btn btn-primary" link="<?php echo $post['id'] ?>">Create comment &rarr;</a>
                         </div>
                         <div class="card-footer text-muted">
                             Posted on <?php echo $post['creation_time'] ?> by <?php echo $post['username']  ?>

@@ -6,14 +6,13 @@ if (isset($_POST['save'])) {
     $creation_time = new DateTime();
 
     $stmt = $pdo->prepare("INSERT INTO comments (text, user_id, post_id, creation_time)
-                        VALUES(:text,:user_id, :post_id, :creation_time) ");
-    var_dump($_SESSION['post_id']);die();
+                        VALUES(:text, :user_id, :post_id, :creation_time) ");
 
 
     $stmt->execute([
         'text' => $text,
         'user_id' => $_SESSION['id'],
-        'post_id' => $_GET['post_id'],
+        'post_id' => $_GET['id'],
         'creation_time' => $creation_time->format('Y-m-d H:i:s')
     ]);
     header("location:posts.php");
@@ -34,5 +33,6 @@ if (isset($_POST['save'])) {
         </div>
     </div>
 </div>
+
 <?php
 include 'includes/footer.php';
