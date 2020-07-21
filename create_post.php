@@ -40,7 +40,7 @@ if (isset($_POST['save'])) {
                     <label for="visibility">Visibility</label>
                     <select name="visibility" class="form-control my-0 py-1 amber-border">
                         <option value="0">Public for everyone</option>
-                        <option value="1">Public for student of my speciality</option>
+                        <option value="1">Public for student of my specialty</option>
                         <option value="2">Public for student of my group</option>
                         <option value="3">Private</option>
                     </select>
